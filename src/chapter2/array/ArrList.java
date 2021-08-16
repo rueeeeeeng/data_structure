@@ -10,7 +10,7 @@ public class ArrList<E> { // 요소 타입
 	public ArrList() {
 		super();
 		this.arr = (E[]) new Object[1]; // 배열 E타입으로 캐스팅 해줘야함
-		this.size = size;
+		this.size = 0;
 	}
 
 	/**
@@ -24,6 +24,14 @@ public class ArrList<E> { // 요소 타입
 			throw new NoSuchElementException();
 		}
 		return arr[index];
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public E[] getArr() {
+		return arr;
 	}
 
 	/*
@@ -44,6 +52,7 @@ public class ArrList<E> { // 요소 타입
 			temp[i] = arr[i];
 		}
 		arr = (E[]) temp;
+
 	}
 
 	/*
@@ -78,12 +87,23 @@ public class ArrList<E> { // 요소 타입
 	/*
 	 * 배열 삭제 순서 1.앞으로 이동 2.크기 줄이기
 	 */
-	public void delete(int index) {
-		if (size == 0)
-			throw new NoSuchElementException();
+	public E delete(int index) {
+		if (isEmpty())
+			throw new NoSuchElementException(); // underflow경우에 프로그램 정지
+		E item = arr[index];
 		for (int i = index; i < size; i++) {
-			arr[index] = arr[index + 1];
+			arr[i] = arr[i + 1]; // 한칸씩 앞으로 이동
 		}
 		size--;
+		if (size > 0 && size == arr.length / 4) // 배열에 항목들이 1/4만 차지한다면
+			resize(arr.length / 2); // 배열을 1/2크기로 축소
+		return item;
+
 	}
+
+	private boolean isEmpty() {
+		return arr == null;
+	}
+	
+	
 }
