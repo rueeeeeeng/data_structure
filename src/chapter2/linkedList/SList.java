@@ -18,7 +18,7 @@ public class SList<E> {
 	 * @return 탐색 실패시 -1 리턴
 	 */
 	public int search(E target) { //target을 탐색
-		Node p = head;
+		Node p = head; //연결리스트의 첫 노드 참조
 		for (int i = 0; i < size; i++) {
 			if(target == p.getItem()) return i;
 			p = p.getNext();
