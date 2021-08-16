@@ -2,6 +2,7 @@ package chapter2.linkedList;
 
 import java.util.NoSuchElementException;
 
+//이중연결리스트
 public class DList<E> {
 	protected DNode head, tail;
 	protected int size;
