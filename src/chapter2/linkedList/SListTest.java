@@ -3,7 +3,7 @@ package chapter2.linkedList;
 public class SListTest {
 	public static void main(String[] args) {
 		SList fruits = new SList();
-		Node p = new Node(fruits, null);
+		Node p = null;
 		
 		fruits.insertFront("cherry"); // "pear" head 앞쪽에 추가
 		fruits.printList();
@@ -11,6 +11,7 @@ public class SListTest {
 		fruits.insertFront("pear"); // "pear" head 앞쪽에 추가
 		fruits.printList();
 
+//		p= 
 		fruits.insertAfter("grape",p.getNext());
 		fruits.printList();
 
